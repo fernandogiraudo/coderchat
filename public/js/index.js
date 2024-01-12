@@ -23,6 +23,7 @@ inputData.addEventListener('keyup', (event) => {
         if(!!inputData.value.trim()){
             socket.emit('message', {user: userName, data: inputData.value});
         }
+        inputData.value = '';
     }
 });
 

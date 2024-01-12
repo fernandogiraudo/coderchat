@@ -2,6 +2,8 @@ import express from 'express';
 import { Server } from 'socket.io';
 import handlebars from 'express-handlebars';
 import viewsRouters from './routes/views.routes.js';
+import mongoose from 'mongoose';
+import usersRoutes from './routes/users.routes.js';
 
 
 const PORT = 8080;
@@ -15,6 +17,7 @@ app.set('views', 'src/views');
 app.set('view engine', 'handlebars');
 
 app.use('/', viewsRouters);
+app.use('/api/users', usersRoutes);
 
 const httpServer = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
@@ -37,3 +40,4 @@ io.on('connect', socket => {
     });
 });
 
+mongoose.connect('mongodb+srv://fergiraudo:Luna.2024@cluster0.dzpexe4.mongodb.net/');
